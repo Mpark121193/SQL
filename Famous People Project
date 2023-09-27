@@ -1,0 +1,52 @@
+/*I made a table of singers and the songs they wrote/performs as well as where they are from*/
+
+CREATE TABLE artists(id INTEGER PRIMARY KEY AUTOINCREMENT,
+stagename TEXT,
+age INTEGER,
+country TEXT);
+
+INSERT INTO artists(stagename, age, country) VALUES ("tyler, the creator","32","usa");
+INSERT INTO artists(stagename, age, country) VALUES ("daft punk","30","paris");
+INSERT INTO artists(stagename, age, country) VALUES ("erykah badu","52","usa");
+INSERT INTO artists(stagename, age, country) VALUES ("pop smoke","20","usa");
+INSERT INTO artists(stagename, age, country) VALUES ("frank ocean","35","usa");
+INSERT INTO artists(stagename, age, country) VALUES ("tomoko aran", "65", "japan");
+
+
+CREATE TABLE songs(id INTEGER PRIMARY KEY 
+AUTOINCREMENT,
+artists_id INTEGER,
+song TEXT,
+year INTEGER,
+genre TEXT);
+
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("1", "treehome95", "2013", "r&b"); 
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("3","treehome95","2013","r&b");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("2","one more time","2001","dance");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("5","super rich kids","2012","r&b");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("1","she","2011","rap");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("5","she","2011","rap");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("3","next lifetime","1997","r&b");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("4","dior","2019","rap");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("4","christopher walking","2020","rap");
+INSERT INTO songs(artists_id, song, year, genre) VALUES ("6","midnight prentenders","1983","jpop");
+
+/*List the songs an artist has done or was featured in*/
+
+SELECT artists.stagename, songs.song
+FROM artists
+JOIN songs
+ON artists.id = songs.artists_id;
+
+/*above was an inner join. An outer join is not needed, but if it were it would be:
+
+SELECT artists.stagename, songs.song
+FROM artists
+LEFT OUTER JOIN songs
+ON artists.id = songs.artists_id; */
+
+/*List where the artist is from*/
+
+SELECT artists.stagename, artists.country
+FROM artists;
+
