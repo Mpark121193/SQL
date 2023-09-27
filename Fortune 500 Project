@@ -1,0 +1,61 @@
+SELECT * FROM fortune_companies;
+
+/*What's the AVG employees from each industry*/
+
+SELECT industry, AVG(employees) AS avg_employees
+FROM fortune_companies
+GROUP BY industry;
+
+/*Which company from the Technology industry has a revenue of at least 350*/
+
+SELECT company_name
+FROM fortune_companies
+WHERE industry = 'Technology'
+GROUP BY company_name
+HAVING industry >=350;
+
+/* Based off employee data, major corporation have an employee count of >=50,000, >= 1500 is a start up company, >= 2500 is a standard business. How big is each company currently*/
+
+SELECT
+    company_name,
+    employees,
+    CASE
+        WHEN employees >= 50000 THEN 'Major Corporation'
+        WHEN employees >= 2500 THEN 'Standard Business'
+        WHEN employees >= 1500 THEN 'Start-up Company'
+        ELSE 'Small Business'
+    END AS company_size
+FROM fortune_companies;
+
+/*
+
+SELECT company_name, employees,
+CASE 
+WHEN employee >= 50000 THEN 'Major Corportation'
+WHEN employee >= 2500 THEN 'Standard Business'
+WHEN employee >= 1500 THEN 'Start Up'
+ELSE 'Small Business'
+END AS company_size
+FROM fortune_companies;
+
+/* Which company has most paid time off days from the healthcare industry*/
+
+SELECT company_name, max(paid_time_off_days)
+FROM fortune_companies
+WHERE industry = 'Healthcare';
+
+/* Which companies has healthcare benefits and have maternity leave of at least 7 weeks*/
+
+SELECT company_name
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+AND maternity_leave_weeks >= 7;
+
+/*Which companies have 4000 employees or lower, and also have a revenue of at least 120 billion*/
+
+SELECT company_name
+FROM fortune_companies
+WHERE employees <= 4000
+AND revenue >= 120;
+
+
