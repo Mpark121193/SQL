@@ -1,0 +1,25 @@
+/* What does the app's SQL look like? */
+CREATE TABLE high_scores(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+username TEXT,
+game TEXT,
+character TEXT,
+score INTEGER);
+
+/*When high scores are inserted*/
+INSERT INTO high_scores(username,game,character,score) VALUES("lolmeganerd", "street fighter 4", "gen", "1300250");
+INSERT INTO high_scores(username,game,character,score) VALUES("pickles", "street fighter 4", "makato", "1500000");
+INSERT INTO high_scores(username,game,character,score) VALUES("nightmare", "street fighter 4", "makato", "2000000");
+
+SELECT * FROM high_scores;
+/*When a high score is updated*/
+UPDATE high_scores
+SET score = 1400000
+WHERE id = 1;
+
+SELECT * FROM high_scores;
+
+DELETE FROM high_scores
+WHERE username = "pickles";
+
+SELECT * FROM high_scores;
