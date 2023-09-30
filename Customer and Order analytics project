@@ -1,3 +1,5 @@
+#In this SQL project, im querying a database with multiple tables in it to quantify about the customer orders and data.
+
 SELECT * FROM BIT_DB.FebSales;
 
 SELECT * FROM BIT_DB.customers;
